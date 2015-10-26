@@ -1,5 +1,6 @@
 class Book < ActiveRecord::Base
   belongs_to :bookself
+  belongs_to :user, through: :bookshelf
 
   def is_checked_out
     if checked_out.nil?

@@ -7,8 +7,4 @@ class ApplicationController < ActionController::Base
     User.first
   end
 
-  def current_bookshelf
-    Bookshelf.first
-  end
-
 end

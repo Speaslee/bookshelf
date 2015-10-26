@@ -1,6 +1,6 @@
 class Book < ActiveRecord::Base
-  belongs_to :bookself
-  belongs_to :user, through: :bookshelf
+  belongs_to :library
+  #belongs_to :user, through: :checkouts
 
   def is_checked_out
     if checked_out.nil?
@@ -11,5 +11,10 @@ class Book < ActiveRecord::Base
 
   def checked_out?
     !checked_out.nil?
+  end
+
+  def return_book
+    update! checked_out: nil
+    update! due_date: nil
   end
 end

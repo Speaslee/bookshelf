@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151026175925) do
+ActiveRecord::Schema.define(version: 20151026214925) do
 
   create_table "books", force: :cascade do |t|
     t.string   "title",       null: false
@@ -20,11 +20,21 @@ ActiveRecord::Schema.define(version: 20151026175925) do
     t.datetime "checked_out"
     t.datetime "due_date"
     t.string   "genre"
+    t.integer  "library_id"
   end
 
-  create_table "bookself", force: :cascade do |t|
+  create_table "checkouts", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "book_id"
+    t.boolean  "overdue"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "libraries", force: :cascade do |t|
     t.integer "user_id"
     t.integer "book_id"
+    t.string  "name"
   end
 
   create_table "users", force: :cascade do |t|

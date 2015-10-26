@@ -1,0 +1,41 @@
+<%=  link_to "Back to homepage", root_path%>
+
+<%= link_to "Add a book to the library", "/libraries/books/create_book" %>
+<%= link_to "Sign up to use the library", "/libaries/users/create_user" %>
+
+<table class="table table-condensed table-striped table-hover">
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Author</th>
+      <th>Genre</th>
+      <th> Available to checkout  </th>
+      <th> Return </th>
+      <th>Due Date</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% Library.first.books.each do |book| %>
+      <tr>
+        <td><%= book.title %></td>
+        <td><%= book.author%></td>
+        <td><%= book.genre%></td>
+        <td>
+          <% if !book.checked_out? %>
+            <%= form_tag "/books/#{book.id}", method: :patch do %>
+              <button class="btn btn-default">Checkout</button>
+            <% end %>
+            <% end %>
+          </td>
+          <td>
+            <%if book.checked_out?%>
+            <%= form_tag "/books/return/#{book.id}", method: :patch do %>
+            <button class="btn btn-default">Return</button>
+          <% end %>
+          <% end %>
+        </td>
+        <td> <%=book.due_date%> </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

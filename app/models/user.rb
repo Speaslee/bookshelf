@@ -1,4 +1,4 @@
 class User< ActiveRecord::Base
-  belongs_to :bookshelf
-  has_many :books, through: :bookshelf
+  belongs_to :library
+  has_many :books, through: :checkouts
 end

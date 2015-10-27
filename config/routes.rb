@@ -4,7 +4,10 @@ get "/libraries" => "libraries#show"
 get "/login" => "users#login"
 post "/login" => "users#login_page"
 
+delete "/logout"=>"users#logout"
 get "/libraries/books/create_book" => "books#new"
+get "/libraries/books/edit_book" => "books#edit"
+patch "/libraries/books/edit_book" => "books#edit_book"
 post "/libraries/books/create_book" => "books#create"
 
 get "/libraries/users/create_user" => "users#new"

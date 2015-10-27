@@ -9,7 +9,7 @@ class UsersController < ApplicationController
   def login_page
     found=  User.where(
     email: params[:email],
-    password: params[:password]
+    password_digest: params[:password]
     ).first
 
     if found
@@ -21,12 +21,18 @@ class UsersController < ApplicationController
     end
   end
 
+  def logout
+    session[:logged_in_user_id] = nil
+    redirect_to "/"
+  end
+
+
 
   def create
     User.create!(
     name: params[:name],
     email: params[:email],
-    password: params[:password]
+    password_digest: params[:password]
     )
     redirect_to "/login"
   end

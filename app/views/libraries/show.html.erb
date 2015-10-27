@@ -1,8 +1,20 @@
 <h1> Available Books </h1>
+<p> You are logged in as <%= current_user.name %></p>
+<p><%if current_user.admin%>
+  You have admin powers
+  <%end%>
+</p>
+
 <p><%=  link_to "Back to homepage", root_path%>
 </p>
-<p><%= link_to "Add a book to the library", "/libraries/books/create_book" %></p>
+<p> <% if current_user.publisher %>
+  <%= link_to "Add a book to the library", "/libraries/books/create_book" %>
+<% end%></p>
 
+<%= form_tag "/logout", method: :delete do %>
+<button>logout</button>
+  <%end%>
+</form>
 
 <table class="table table-condensed table-striped table-hover">
   <thead>
@@ -13,6 +25,7 @@
       <th> Available to checkout  </th>
       <th> Return </th>
       <th>Due Date</th>
+      <th></th>
     </tr>
   </thead>
   <tbody>
@@ -25,6 +38,7 @@
           <% if !book.checked_out? %>
             <%= form_tag "/books/#{book.id}", method: :patch do %>
               <button class="btn btn-default">Checkout</button>
+              <% Checkout.create!(user_id: current_user.id, book_id: book.id)%>
             <% end %>
             <% end %>
           </td>
@@ -36,6 +50,10 @@
           <% end %>
         </td>
         <td> <%=book.due_date%> </td>
+        <td> <% if current_user.editor %>
+          <%= link_to "Edit Book", "/libraries/books/edit_book" %>
+        <% end%></p>
+        </td>
       </tr>
     <% end %>
   </tbody>

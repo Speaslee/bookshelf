@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
 
 get "/libraries" => "libraries#show"
+get "/login" => "users#login"
+post "/login" => "users#login_page"
 
 get "/libraries/books/create_book" => "books#new"
 post "/libraries/books/create_book" => "books#create"

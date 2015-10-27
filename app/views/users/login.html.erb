@@ -1,0 +1,10 @@
+<h1> Login </h1>
+<%= form_tag "/login_page" %>
+<label>
+  email
+  <input type="text" name= "email">
+</label>
+<label>
+  password
+  <input type="password" name="password">
+<p><%= link_to "Not signed up yet? Create new user", "/libaries/users/create_user" %></p>

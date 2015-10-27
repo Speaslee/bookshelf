@@ -1,0 +1,21 @@
+<h1> Add a Book </h1>
+
+ <%= form_tag "/libraries/books/create_book" %>
+ <label>
+   Title
+   <input type="text" name= "title">
+ </label>
+ <label>
+   Author
+   <input type="text" name= "author">
+ </label>
+ <label>
+   Genre
+   <input type="text" name= "genre">
+ </label>
+ <label>
+   Tagline
+   <input type="text" name= "tagline">
+ </label>
+ <button> Save</button>
+ </form>

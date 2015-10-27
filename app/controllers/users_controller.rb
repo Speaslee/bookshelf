@@ -14,7 +14,7 @@ class UsersController < ApplicationController
 
     if found
       session[:logged_in_user_id] = found.id
-      redirect_to "/"
+      redirect_to "/libraries"
     else
       "Please re-enter your password and email"
       redirect_to "/login"
@@ -23,9 +23,9 @@ class UsersController < ApplicationController
 
 
   def create
-    User.create (
-    name: params[:name]
-    email: params[:email]
+    User.create!(
+    name: params[:name],
+    email: params[:email],
     password: params[:password]
     )
     redirect_to "/login"

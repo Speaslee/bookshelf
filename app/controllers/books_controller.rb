@@ -40,7 +40,7 @@ class BooksController < ApplicationController
   end
 
   def profile
-    unless current_user.editor
+    unless current_user
       redirect_to "/libraries"
     end
   end

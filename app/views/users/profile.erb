@@ -2,9 +2,15 @@
 
 Name: <%= current_user.name %>
 Email: <%= current_user.email %>
-
+<p></p>
 <%checkout = Checkout.where(user_id: current_user.id)%>
-
+<% if !checkout.any? %>
+You have never checked out a book!
+<% elsif checkout.count == 1 %>
+You have checked out your first book!
+<% else %>
+You have checked out <%=checkout.count%> books!
+<%end%>
 <p></p>
   <p></p>
   <p></p>

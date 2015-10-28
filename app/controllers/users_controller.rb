@@ -32,7 +32,7 @@ class UsersController < ApplicationController
     User.create!(
     name: params[:name],
     email: params[:email],
-    password_digest: params[:password]
+    password: params[:password]
     )
     redirect_to "/login"
   end

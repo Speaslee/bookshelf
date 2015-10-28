@@ -1,6 +1,7 @@
 class BooksController < ApplicationController
 
   def new
+    @book = Book.new
     unless current_user.publisher
       redirect_to "/libraries"
     end
@@ -8,15 +9,22 @@ class BooksController < ApplicationController
 
   def create
     if current_user.publisher
-      Library.first.books.create!(
+      @book=Library.first.books.new(
       title: params[:title],
       author: params[:author],
       genre: params[:genre],
       tagline: params[:tagline]
       )
-      redirect_to "/libraries"
+      if @book.save
+        flash[:sucess] = "Book added"
+      redirect_to "/libraries/"
     else
-      "You do not have the proper permission to do this"
+      flash[:danger]= "Fields can't be blank"
+      render :new
+    end
+
+    else
+      redirect_to "/libraries"
     end
   end
 

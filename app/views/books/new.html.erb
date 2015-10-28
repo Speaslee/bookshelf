@@ -1,5 +1,7 @@
 <h1> Add a Book </h1>
-
+<% if @address.errors.any?%>
+  <div class="alert alert-danger" role="alert"> Fields cannot be blank </div>
+  <%end%>
  <%= form_tag "/libraries/books/create_book" %>
  <label>
    Title
@@ -19,3 +21,5 @@
  </label>
  <button> Save</button>
  </form>
+ <p><%=  link_to "Back to Library", "/libraries", class:"btn btn-default"%>
+ </p>

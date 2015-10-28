@@ -1,4 +1,7 @@
 <h1> Add an Address </h1>
+<% if @address.errors.any?%>
+  <div class="alert alert-danger" role="alert"> Fields cannot be blank </div>
+  <%end%>
 <%= form_tag "/users/add_address"%>
 <label>
   Street

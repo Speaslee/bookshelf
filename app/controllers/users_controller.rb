@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
 
   def new
+    @user = User.new
   end
 
   def login
@@ -27,13 +28,19 @@ class UsersController < ApplicationController
   end
 
   def create
-    User.create!(
+    @user = User.new(
     name: params[:name],
     email: params[:email],
     password: params[:password]
     )
+    if @user.save
+      flash[:sucess] = "You've been added"
     redirect_to "/login"
+  else
+    flash[:danger]= "Fields can't be blank"
+    render :new
   end
+end
 
   def admin
     unless current_user.admin

@@ -1,12 +1,14 @@
 <h1> Edit Address </h1>
+
+
 <%= form_tag "/users/edit_user", method: :patch do %>
-<label>
+ <label>
   Street
-  <input type="text" name= "street">
+<input type="text" name= "street">
 </label>
 <label>
   City
-  <input type="text" name= "city">
+<input type="text" name= "city">
 </label>
 <label>
   State
@@ -14,7 +16,7 @@
 </label>
 <label>
   Zip
-  <input type="text" name= "zip">
+<input type="text" name= "zip">
 </label>
 <button> Save</button>
 <%end%>

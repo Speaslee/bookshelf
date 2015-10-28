@@ -1,4 +1,7 @@
 <h1> Create a new User </h1>
+<% if @user.errors.any?%>
+  <div class="alert alert-danger" role="alert"> Fields cannot be blank </div>
+  <%end%>
 <%=  link_to "Back to homepage", root_path, class:"btn btn-default"%>
 <%= form_tag "/libraries/users/create_user" %>
 <label>

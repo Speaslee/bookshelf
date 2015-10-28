@@ -21,11 +21,17 @@ class BooksController < ApplicationController
   end
 
   def edit
+    unless current_user.editor
+      redirect_to "/libraries"
+    end
+  end
+
+  def edit_book
     if current_user.editor
-    Book.update!(
-    title: params[:title],
-    author: params[:author],
-    genre: params[:genre]
+    book = Book.find params[:id]
+    good_params = params.permit(:title, :author, :genre).select{|k,v| v.present?}
+    book.update(
+    good_params
     )
     redirect_to "/libraries"
   else

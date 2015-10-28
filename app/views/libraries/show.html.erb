@@ -51,7 +51,7 @@
         </td>
         <td> <%=book.due_date%> </td>
         <td> <% if current_user.editor %>
-          <%= link_to "Edit Book", "/libraries/books/edit_book" %>
+          <%= link_to "Edit Book", "/libraries/books/edit_book/#{book.id}" %>
         <% end%></p>
         </td>
       </tr>

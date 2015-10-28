@@ -1,8 +1,9 @@
-<h1> Add a Book </h1>
-
- <%= form_tag "/libraries/books/edit_book" %>
+<% book = Book.find params[:id]%>
+<h1> Edit <%=book.title%> </h1>
+<% book = Book.find params[:id]%>
+ <%= form_tag "/books/edit_book/#{book.id}", method: :patch do %>
  <label>
-   <%= book.name %>
+   <%= book.title %>
    <input type="text" name= "title">
  </label>
  <label>
@@ -14,4 +15,7 @@
    <input type="text" name= "genre">
  </label>
  <button> Save</button>
+ <%end%>
  </form>
+ <p><%=  link_to "Back to Library", "/libraries"%>
+ </p>

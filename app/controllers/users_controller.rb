@@ -26,8 +26,6 @@ class UsersController < ApplicationController
     redirect_to "/"
   end
 
-
-
   def create
     User.create!(
     name: params[:name],
@@ -37,6 +35,35 @@ class UsersController < ApplicationController
     redirect_to "/login"
   end
 
+  def admin
+    unless current_user.admin
+      redirect_to "/"
+    end
+  end
 
+  def assign_admin
+    if current_user.admin
+      user = User.find params[:id]
+      good_params = params.permit(:publisher, :editor, :admin).select{|k,v| v.present?}
+      user.update(
+      good_params
+      )
+      redirect_to "/libraries/user_list"
+    else
+      redirect_to "/"
+    end
+  end
 
+  def delete_admin
+    if current_user.admin
+      user = User.find params[:id]
+      good_params = params.permit(:publisher, :editor, :admin).select{|k,v| v.present?}
+      user.update(
+      good_params
+      )
+      redirect_to "/libraries/user_list"
+    else
+      redirect_to "/"
+    end
+  end
 end

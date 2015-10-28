@@ -1,6 +1,6 @@
 <h1> Available Books </h1>
 <p> You are logged in as <%= current_user.name %></p>
-<p><%if current_user.admin%>
+<p><%if current_user.admin || current_user.publisher || current_user.editor%>
   You have admin powers
   <%end%>
 </p>
@@ -10,7 +10,7 @@
 <p> <% if current_user.publisher %>
   <%= link_to "Add a book to the library", "/libraries/books/create_book", class:"btn btn-default" %>
   <% end%></p>
-
+<p> <%= link_to "Fellow Users", "/libraries/user_list", class:"btn btn-default"%>
   <%= form_tag "/logout", method: :delete do %>
   <button>logout</button>
   <%end%>

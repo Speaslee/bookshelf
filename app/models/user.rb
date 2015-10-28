@@ -7,10 +7,10 @@ class User< ActiveRecord::Base
   has_secure_password
 
   validates_presence_of :email, :name, :password_digest
-  def unique_checkout
-    checkedout = Checkout.where(user_id: current_user.id).to_a
-    ucheckout = checkedout.uniq{|checkout| checkout.book_id}}
-  end
-  ucheckout
-  end
+  # def unique_checkout
+  #   checkedout = Checkout.where(user_id: current_user.id).to_a
+  #   ucheckout = checkedout.uniq{|checkout| checkout.book_id}}
+  # end
+  # ucheckout
+  # end
 end

@@ -20,8 +20,6 @@ post "/login" => "users#login_page"
 delete "/logout"=>"users#logout"
 get "/users/assign_admin/:id" =>"users#admin"
 patch "/users/assign_admin/:id" =>"users#assign_admin"
-delete "/users/assign_admin/:id"=>"users#delete_admin"
-
 
 get "/users/edit"=>"address#edit"
 patch "/users/edit_user"=>"address#edit_user"

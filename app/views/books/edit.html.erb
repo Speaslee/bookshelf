@@ -1,6 +1,5 @@
 <% book = Book.find params[:id]%>
 <h1> Edit <%=book.title%> </h1>
-<% book = Book.find params[:id]%>
  <%= form_tag "/books/edit_book/#{book.id}", method: :patch do %>
  <label>
    <%= book.title %>

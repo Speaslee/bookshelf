@@ -14,6 +14,7 @@ get "/libraries/users/create_user" => "users#new"
 post "/libraries/users/create_user" => "users#create"
 get "/libraries/users/profile/:id" => "users#profile"
 
+delete "/books/delete_book/:id" => "books#delete"
 patch "/books/:id" => "books#mark_as_checked_out"
 patch "/books/edit_book/:id" => "books#edit_book"
 patch "/books/return/:id" => "books#returned_book"

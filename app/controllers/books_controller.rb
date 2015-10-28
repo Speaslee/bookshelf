@@ -28,22 +28,32 @@ class BooksController < ApplicationController
 
   def edit_book
     if current_user.editor
-    book = Book.find params[:id]
-    good_params = params.permit(:title, :author, :genre).select{|k,v| v.present?}
-    book.update(
-    good_params
-    )
-    redirect_to "/libraries"
-  else
-    redirect_to "/libraries"
-  end
+      book = Book.find params[:id]
+      good_params = params.permit(:title, :author, :genre).select{|k,v| v.present?}
+      book.update(
+      good_params
+      )
+      redirect_to "/libraries"
+    else
+      redirect_to "/libraries"
+    end
   end
 
-def profile
-  unless current_user.editor
-    redirect_to "/libraries"
+  def profile
+    unless current_user.editor
+      redirect_to "/libraries"
+    end
   end
-end
+
+  def delete
+    if current_user.publisher
+      book = Book.find params[:id]
+      book.destroy
+      redirect_to "/libraries"
+    else
+      redirect_to "/libraries"
+    end
+  end
 
 
   def mark_as_checked_out

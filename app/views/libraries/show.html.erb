@@ -56,7 +56,13 @@
       <td> <%=book.due_date%> </td>
       <td> <% if current_user.editor %>
         <%= link_to "Edit Book", "/libraries/books/edit_book/#{book.id}" %>
-        <% end%></p>
+        <% end%>
+      </td>
+      <td>  <% if current_user.publisher %>
+          <%= form_tag "books/delete_book/#{book.id}", method: :delete do%>
+          <button class="btn btn-default">Delete</button>
+          <% end%>
+          <% end%>
       </td>
       <td> <%= link_to "Checkout History", "/libraries/books/profile/#{book.id}"%>
       </tr>

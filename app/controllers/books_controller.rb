@@ -49,6 +49,7 @@ end
   def mark_as_checked_out
     book = Book.find params[:id]
     book.is_checked_out
+    Checkout.create!(user_id: current_user.id, book_id: book.id)
     redirect_to "/libraries"
   end
 

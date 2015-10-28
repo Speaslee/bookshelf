@@ -6,6 +6,7 @@ class Book < ActiveRecord::Base
     if checked_out.nil?
       update! checked_out: Time.now
       update! due_date: 14.days.from_now
+    
     end
   end
 

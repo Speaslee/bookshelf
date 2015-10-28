@@ -39,7 +39,6 @@
         <% if !book.checked_out? %>
         <%= form_tag "/books/#{book.id}", method: :patch do %>
         <button class="btn btn-default">Checkout</button>
-        <% Checkout.create!(user_id: current_user.id, book_id: book.id)%>
         <% end %>
         <% end %>
       </td>

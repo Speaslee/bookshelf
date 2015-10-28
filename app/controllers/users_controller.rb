@@ -9,10 +9,10 @@ class UsersController < ApplicationController
   def login_page
     found=  User.where(
     email: params[:email],
-    password_digest: params[:password]
     ).first
 
-    if found
+    if found.authenticate(params[:password])
+  #  if found
       session[:logged_in_user_id] = found.id
       redirect_to "/libraries"
     else
@@ -26,7 +26,10 @@ class UsersController < ApplicationController
     redirect_to "/"
   end
 
+def unique_checkout
+checkout = Checkout.where(user_id: current_user.id).to_a
 
+end
 
   def create
     User.create!(

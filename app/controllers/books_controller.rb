@@ -39,6 +39,12 @@ class BooksController < ApplicationController
   end
   end
 
+def profile
+  unless current_user.editor
+    redirect_to "/libraries"
+  end
+end
+
 
   def mark_as_checked_out
     book = Book.find params[:id]

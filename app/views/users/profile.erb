@@ -1,0 +1,32 @@
+<h1> <%= current_user.name %>'s History </h1>
+
+Name: <%= current_user.name %>
+Email: <%= current_user.email %>
+
+<%checkout = Checkout.where(user_id: current_user.id)%>
+
+<p></p>
+  <p></p>
+  <p></p>
+  <p>Books you currently have out:</p>
+<ul>
+  <% checkout.each do |history|%>
+  <%if history.book.checked_out?%>
+  <li>
+    <%= history.book.title%> due at <%=history.book.due_date%>
+  </li>
+    <%end%>
+      <%end%>
+    </ul>
+
+<p></p>
+You have checked out:
+<ul>
+  <% checkout.each do |history|%>
+  <li>
+    <%=history.book.title%> <%= time_ago_in_words(history.created_at) %> ago.
+  </li>
+  <%end%>
+</ul>
+    <p><%=  link_to "Back to Library", "/libraries"%>
+    </p>

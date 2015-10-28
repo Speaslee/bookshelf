@@ -1,0 +1,13 @@
+<% book = Book.find params[:id]%>
+
+<h1><%=book.title%>'s Checkout History </h1>
+<ul>
+  <%checkout = Checkout.where(book_id: book.id)%>
+  <% checkout.each do |history|%>
+  <li>
+    <%=history.user.name%> checked out this book <%= time_ago_in_words(history.created_at) %> ago.
+  </li>
+  <%end%>
+  <ul>
+    <p><%=  link_to "Back to Library", "/libraries"%>
+    </p>

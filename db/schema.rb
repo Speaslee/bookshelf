@@ -13,6 +13,14 @@
 
 ActiveRecord::Schema.define(version: 20151028175858) do
 
+  create_table "addresses", force: :cascade do |t|
+    t.integer "user_id"
+    t.string  "street"
+    t.string  "zip"
+    t.string  "state"
+    t.string  "city"
+  end
+
   create_table "books", force: :cascade do |t|
     t.string   "title",       null: false
     t.string   "author"

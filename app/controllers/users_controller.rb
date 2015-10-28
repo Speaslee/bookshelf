@@ -26,10 +26,7 @@ class UsersController < ApplicationController
     redirect_to "/"
   end
 
-def unique_checkout
-checkout = Checkout.where(user_id: current_user.id).to_a
 
-end
 
   def create
     User.create!(
@@ -39,5 +36,7 @@ end
     )
     redirect_to "/login"
   end
+
+
 
 end

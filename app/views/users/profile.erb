@@ -1,7 +1,27 @@
 <h1> <%= current_user.name %>'s History </h1>
 
 Name: <%= current_user.name %>
+<p></p>
 Email: <%= current_user.email %>
+<p></p>
+<% address = Address.where(user_id: current_user.id)%>
+<% if address.any? %>
+ Address:<ul>
+  <%address.each do |place|%>
+  <li>
+    <%= place.street %>, <%= place.city %> <%= place.state %>, <%= place.zip %>
+  <%=  link_to "Edit", "/users/edit",  class:"btn btn-default"%>
+      <%= form_tag "/users/delete_address/#{place.id}", method: :delete do%>
+      <button class="btn btn-default">Delete</button>
+      <% end%>
+    </form>
+  <%end%>
+  </li>
+</ul>
+<%end%>
+
+<p></p>
+<%=  link_to "Add an Address", "/users/add_address",  class:"btn btn-default"%>
 <p></p>
 <%checkout = Checkout.where(user_id: current_user.id)%>
 <% if !checkout.any? %>

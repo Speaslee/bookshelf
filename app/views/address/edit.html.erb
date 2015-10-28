@@ -1,0 +1,23 @@
+<h1> Edit Address </h1>
+<%= form_tag "/users/edit_user", method: :patch do %>
+<label>
+  Street
+  <input type="text" name= "street">
+</label>
+<label>
+  City
+  <input type="text" name= "city">
+</label>
+<label>
+  State
+  <input type="text" name= "state">
+</label>
+<label>
+  Zip
+  <input type="text" name= "zip">
+</label>
+<button> Save</button>
+<%end%>
+</form>
+<p><%=  link_to "Back to Library", "/libraries", class:"btn btn-default"%>
+</p>

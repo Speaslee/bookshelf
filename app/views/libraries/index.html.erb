@@ -1,5 +1,12 @@
 <h1>Welcome to the library</h1>
 
-<p><%= link_to "Sign up to use the library", "/libaries/users/create_user" %></p>
+<p><%= link_to "Sign up to use the library", "/libraries/users/create_user", class:"btn btn-default" %></p>
 
-<%= link_to "Login if existing user", "/login" %></p>"
+<p><%= link_to "Login if existing user", "/login", class:"btn btn-default" %></p>
+<%if current_user %>
+<p> You are logged in as <%= current_user.name %></p>
+<p><%= link_to "Enter", "/libraries", class:"btn btn-default" %></p>
+<%= form_tag "/logout", method: :delete do %>
+<button>logout</button>
+<%end%>
+<%end%>

@@ -1,5 +1,5 @@
 <h1> Create a new User </h1>
-
+<%=  link_to "Back to homepage", root_path, class:"btn btn-default"%>
 <%= form_tag "/libraries/users/create_user" %>
 <label>
   Name
@@ -14,4 +14,5 @@
   <input type="password" name= "password">
 </label>
 <button> Save</button>
+
 </form>

@@ -4,11 +4,11 @@
   You have admin powers
   <%end%>
 </p>
-<%= link_to  "Your History", "/libraries/users/profile/#{current_user.id}"%>
-<p><%=  link_to "Back to homepage", root_path%>
+<%= link_to  "Your History", "/libraries/users/profile/#{current_user.id}", class:"btn btn-default"%>
+<p><%=  link_to "Back to homepage", root_path, class:"btn btn-default"%>
 </p>
 <p> <% if current_user.publisher %>
-  <%= link_to "Add a book to the library", "/libraries/books/create_book" %>
+  <%= link_to "Add a book to the library", "/libraries/books/create_book", class:"btn btn-default" %>
   <% end%></p>
 
   <%= form_tag "/logout", method: :delete do %>
@@ -26,6 +26,7 @@
       <th> Return </th>
       <th>Due Date</th>
       <th></th>
+        <th></th>
       <th>Checkout_history</th>
     </tr>
   </thead>
@@ -55,7 +56,7 @@
       </td>
       <td> <%=book.due_date%> </td>
       <td> <% if current_user.editor %>
-        <%= link_to "Edit Book", "/libraries/books/edit_book/#{book.id}" %>
+        <%= link_to "Edit Book", "/libraries/books/edit_book/#{book.id}", class:"btn btn-default" %>
         <% end%>
       </td>
       <td>  <% if current_user.publisher %>
@@ -64,7 +65,8 @@
           <% end%>
           <% end%>
       </td>
-      <td> <%= link_to "Checkout History", "/libraries/books/profile/#{book.id}"%>
+      <td> <%= link_to "Checkout History", "/libraries/books/profile/#{book.id}", class:"btn btn-default"%>
+      </td>
       </tr>
       <% end %>
     </tbody>

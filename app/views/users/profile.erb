@@ -12,9 +12,8 @@ Email: <%= current_user.email %>
 <ul>
   <% checkout.each do |history|%>
   <%if history.book.checked_out?%>
-  <% last_check = checkout.last %>
   <li>
-    <%=last_check.book.title%> due in <%=time_ago_in_words(last_check.book.due_date)%>
+    <%= history.book.title%> due at <%=time_ago_in_words(history.book.due_date)%>
   </li>
     <%end%>
       <%end%>

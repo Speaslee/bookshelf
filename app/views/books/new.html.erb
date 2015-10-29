@@ -1,5 +1,5 @@
 <h1> Add a Book </h1>
-<% if @address.errors.any?%>
+<% if @book.errors.any?%>
   <div class="alert alert-danger" role="alert"> Fields cannot be blank </div>
   <%end%>
  <%= form_tag "/libraries/books/create_book" %>

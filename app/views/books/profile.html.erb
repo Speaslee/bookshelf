@@ -1,6 +1,19 @@
 <% book = Book.find params[:id]%>
 
-<h1><%=book.title%>'s Checkout History </h1>
+<h1><%=book.title%></h1>
+<h3><%=book.author%></h3>
+<p><%=book.genre%></p>
+<p><%=book.publisher%>,
+<%=book.published_date%></p>
+
+<p><%=book.isbn%></p>
+<p><%=book.description%></p>
+<p><%=book.page_count%></p>
+<p><%=book.average_rating%></p>
+<%if book.preview_link%>
+<a href=<%=book.preview_link%>> Preview </a>
+<%end%>
+  <h2> Checkout History </h2>
 <%checkout = Checkout.where(book_id: book.id)%>
 This book has been checked out <%=checkout.count%> times.
 <ul>

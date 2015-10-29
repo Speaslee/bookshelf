@@ -9,11 +9,20 @@ class BooksController < ApplicationController
 
   def create
     if current_user.publisher
+      expand = GooleBooks.search(params[:title], inauthor:params[:author]).first
       @book=Library.first.books.new(
       title: params[:title],
       author: params[:author],
       genre: params[:genre],
-      tagline: params[:tagline]
+      tagline: params[:tagline],
+      publisher: expand.publisher,
+      published_date: expand.published_date,
+      description: expand.description,
+      isbn: expand.isbn,
+      page_count: expand.page_count,
+      average_rating: expand.average_rating,
+      preview_link: expand.preview_link,
+      image_link: expand.image_link
       )
       if @book.save
         flash[:sucess] = "Book added"

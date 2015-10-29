@@ -9,7 +9,7 @@ class BooksController < ApplicationController
 
   def create
     if current_user.publisher
-      expand = GooleBooks.search(params[:title], inauthor:params[:author]).first
+      expand = GoogleBooks.search(params[:title], inauthor:params[:author]).first
       @book=Library.first.books.new(
       title: params[:title],
       author: params[:author],
@@ -31,7 +31,6 @@ class BooksController < ApplicationController
       flash[:danger]= "Fields can't be blank"
       render :new
     end
-
     else
       redirect_to "/libraries"
     end

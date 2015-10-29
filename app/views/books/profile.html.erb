@@ -2,14 +2,14 @@
 
 <h1><%=book.title%></h1>
 <h3><%=book.author%></h3>
-<p><%=book.genre%></p>
+<p><b><%=book.genre%></p>
 <p><%=book.publisher%>,
-<%=book.published_date%></p>
+<%=book.published_date%></b></p>
 
-<p><%=book.isbn%></p>
-<p><%=book.description%></p>
-<p><%=book.page_count%></p>
-<p><%=book.average_rating%></p>
+<p><b>ISBN number: </b><%=book.isbn%></p>
+<p><b>Description: </b><%=book.description%></p>
+<p><b>Page Count:</b> <%=book.page_count%></p>
+<p><b>Average Rating:</b> <%=book.average_rating%></p>
 <%if book.preview_link%>
 <a href=<%=book.preview_link%>> Preview </a>
 <%end%>

@@ -17,7 +17,6 @@ class UsersController < ApplicationController
       session[:logged_in_user_id] = found.id
       redirect_to "/libraries"
     else
-      "Please re-enter your password and email"
       redirect_to "/login"
     end
   end

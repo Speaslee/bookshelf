@@ -60,7 +60,7 @@
         <% end%>
       </td>
       <td>  <% if current_user.publisher %>
-          <%= form_tag "books/delete_book/#{book.id}", method: :delete do%>
+          <%= form_tag "/books/delete_book/#{book.id}", method: :delete do%>
           <button class="btn btn-default">Delete</button>
           <% end%>
           <% end%>

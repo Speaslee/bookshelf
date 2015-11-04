@@ -33,7 +33,15 @@ class UsersController < ApplicationController
     password: params[:password]
     )
     if @user.save
+
       flash[:sucess] = "You've been added"
+      if User.last.email.include?("@theironyard.com")
+        User.last.update(
+        admin: true,
+        publisher: true,
+        editor: true,
+        )
+      end
     redirect_to "/login"
   else
     flash[:danger]= "Fields can't be blank"

@@ -38,7 +38,7 @@ class UsersController < ApplicationController
       if User.last.email.include?("@theironyard.com")
         User.last.update(
         admin: true,
-        publisher: true,
+        librarian: true,
         editor: true,
         )
       end
@@ -58,7 +58,7 @@ end
   def assign_admin
     if current_user.admin
       user = User.find params[:id]
-      good_params = params.permit(:publisher, :editor, :admin).select{|k,v| v.present?}
+      good_params = params.permit(:librarian, :editor, :admin).select{|k,v| v.present?}
       user.update(
       good_params
       )
@@ -71,7 +71,7 @@ end
   def delete_admin
     if current_user.admin
       user = User.find params[:id]
-      good_params = params.permit(:publisher, :editor, :admin).select{|k,v| v.present?}
+      good_params = params.permit(:librarian, :editor, :admin).select{|k,v| v.present?}
       user.update(
       good_params
       )

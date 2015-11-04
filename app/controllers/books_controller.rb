@@ -2,13 +2,13 @@ class BooksController < ApplicationController
 
   def new
     @book = Book.new
-    unless current_user.publisher
+    unless current_user.librarian
       redirect_to "/libraries"
     end
   end
 
   def create
-    if current_user.publisher
+    if current_user.librarian
       expand = GoogleBooks.search(params[:title], inauthor:params[:author]).first
       @book=Library.first.books.new(
       title: params[:title],
@@ -62,7 +62,7 @@ class BooksController < ApplicationController
   end
 
   def delete
-    if current_user.publisher
+    if current_user.librarian
       book = Book.find params[:id]
       book.destroy
       redirect_to "/libraries"

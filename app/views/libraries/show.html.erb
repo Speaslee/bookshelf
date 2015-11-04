@@ -1,13 +1,13 @@
 <h1> Available Books </h1>
 <p> You are logged in as <%= current_user.name %></p>
-<p><%if current_user.admin || current_user.publisher || current_user.editor%>
+<p><%if current_user.admin || current_user.librarian || current_user.editor%>
   You have admin powers
   <%end%>
 </p>
 <%= link_to  "Your History", "/libraries/users/profile/#{current_user.id}", class:"btn btn-default"%>
 <p><%=  link_to "Back to homepage", root_path, class:"btn btn-default"%>
 </p>
-<p> <% if current_user.publisher %>
+<p> <% if current_user.librarian %>
   <%= link_to "Add a book to the library", "/libraries/books/create_book", class:"btn btn-default" %>
   <% end%></p>
 <p> <%= link_to "Fellow Users", "/libraries/user_list", class:"btn btn-default"%>
@@ -59,7 +59,7 @@
         <%= link_to "Edit Book", "/libraries/books/edit_book/#{book.id}", class:"btn btn-default" %>
         <% end%>
       </td>
-      <td>  <% if current_user.publisher %>
+      <td>  <% if current_user.librarian %>
           <%= form_tag "/books/delete_book/#{book.id}", method: :delete do%>
           <button class="btn btn-default">Delete</button>
           <% end%>

@@ -14,8 +14,8 @@ admin
 privileges
 <%= form_tag "/users/assign_admin/#{user.id}", method: :patch do %>
 <label>
-  Publisher
-  <input type="checkbox" name= "publisher" value=true>
+  Librarian
+  <input type="checkbox" name= "librarian" value=true>
 </label>
 <label>
   Editor
@@ -33,8 +33,8 @@ privileges
 </form>
 <%= form_tag "/users/assign_admin/#{user.id}", method: :delete do %>
 <label>
-  Publisher
-  <input type="checkbox" name= "publisher" value=false>
+  Librarian
+  <input type="checkbox" name= "librarian" value=false>
 </label>
 <label>
   Editor

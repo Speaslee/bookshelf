@@ -61,7 +61,7 @@ ActiveRecord::Schema.define(version: 20151028233754) do
     t.datetime "updated_at",      null: false
     t.boolean  "admin"
     t.boolean  "editor"
-    t.boolean  "publisher"
+    t.boolean  "librarian"
   end
 
 end

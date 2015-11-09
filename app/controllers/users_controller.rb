@@ -7,8 +7,8 @@ class UsersController < ApplicationController
   def login
   end
 
-  def login_page u
-    found=  User.where(email: params[:email],).first || u
+  def login_page 
+    found=  User.where(email: params[:email],).first
 
     if found.authenticate(params[:password])
   #  if found

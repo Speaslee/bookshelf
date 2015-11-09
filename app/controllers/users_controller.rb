@@ -7,7 +7,7 @@ class UsersController < ApplicationController
   def login
   end
 
-  def login_page 
+  def login_page
     found=  User.where(email: params[:email],).first
 
     if found.authenticate(params[:password])
@@ -79,14 +79,7 @@ end
     end
   end
 
-  def google_oauth2
-    auth_hash =request.env["omniauth.auth"]
-     if User.from_omniauth(auth_hash)
-       login_page User.from_omniauth(auth_hash)
-    else
-      redirect_to "/libraries/users/create_user"
-    end
-  end
+
 
 
 

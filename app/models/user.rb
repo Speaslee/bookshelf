@@ -19,7 +19,7 @@ class User< ActiveRecord::Base
     user = User.where(:email => data["email"].first)
     unless user
       user = User.create(
-        name:data["name"]
+        name:data["name"],
         email: data["email"],
         password: [*('a'..'z'),*('0'..'9')].shuffle[0,8].join
       )

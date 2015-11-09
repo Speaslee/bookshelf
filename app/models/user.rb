@@ -18,9 +18,11 @@ class User< ActiveRecord::Base
     data =  access_token
     user = User.where(:email => data["email"].first)
     unless user
-      user = User.create(name:data["name"]
-      email:data["email"],
-      password: [*('a'..'z'),*('0'..'9')].shuffle[0,8].join)
+      user = User.create(
+        name:data["name"]
+        email: data["email"],
+        password: [*('a'..'z'),*('0'..'9')].shuffle[0,8].join
+      )
       flash[:notice] = "Successfully created Your password is #{:password} "
     end
     user

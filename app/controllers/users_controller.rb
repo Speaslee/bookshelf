@@ -80,4 +80,22 @@ end
       redirect_to "/"
     end
   end
+
+  def google_oauth2
+    auth_hash =request.env["omniauth.auth"]
+     if User.from_omniauth()
+       session[:user_id] = @user.id
+       redirect_to root_path
+    else
+      @user = User.new(
+      name: auth_hash['info']['name'],
+      email: auth_hash['info']['email']
+      )
+      @user.save
+      redirect_to root_path
+    end
+  end
+
+
+
 end

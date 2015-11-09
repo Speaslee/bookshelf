@@ -29,7 +29,7 @@ get "/users/add_address"=>"address#new"
 post "/users/add_address"=> "address#create"
 delete "/users/delete_address/:id" => "address#delete"
 
-
+get "/auth/google_oauth2" => "users#google_oauth2"
 
 
 root "libraries#index"

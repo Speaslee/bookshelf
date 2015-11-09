@@ -11,7 +11,6 @@ class UsersController < ApplicationController
     found=  User.where(email: params[:email],).first
 
     if found.authenticate(params[:password])
-  #  if found
       session[:logged_in_user_id] = found.id
       redirect_to "/libraries"
     else
@@ -79,6 +78,17 @@ end
     end
   end
 
+  def google_oauth2
+    auth_hash =request.env["omniauth.auth"]
+     user = User.where(:email => auth['info']['email'])
+     url = session [:return_to]|| root_path
+     session[:return_to] = nil
+     if user.save
+       session[:user_id] = user.id
+       redirect_to root
+
+    end
+  end
 
 
 

@@ -7,10 +7,8 @@ class UsersController < ApplicationController
   def login
   end
 
-  def login_page
-    found=  User.where(
-    email: params[:email],
-    ).first
+  def login_page u
+    found=  User.where(email: params[:email],).first || u
 
     if found.authenticate(params[:password])
   #  if found
@@ -83,16 +81,10 @@ end
 
   def google_oauth2
     auth_hash =request.env["omniauth.auth"]
-     if User.from_omniauth()
-       session[:user_id] = @user.id
-       redirect_to root_path
+     if User.from_omniauth(auth_hash)
+       login_page User.from_omniauth(auth_hash)
     else
-      @user = User.new(
-      name: auth_hash['info']['name'],
-      email: auth_hash['info']['email']
-      )
-      @user.save
-      redirect_to root_path
+      redirect_to "/libraries/users/create_user"
     end
   end
 

@@ -80,14 +80,13 @@ end
 
   def google_oauth2
     auth_hash =request.env["omniauth.auth"]
-     user = User.where(:email => auth['info']['email'])
-     url = session [:return_to]|| root_path
+     user = User.from_omniauth(auth_hash)
+     url = session[:return_to]|| root_path
      session[:return_to] = nil
      if user.save
-       session[:user_id] = user.id
-       redirect_to "/"
-     else
-       redirect to "/login"
+       session[:logged_in_user_id] = user.id
+       redirect_to "/libraries"
+
     end
   end
 

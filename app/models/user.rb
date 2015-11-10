@@ -16,14 +16,14 @@ class User< ActiveRecord::Base
 
   def self.from_omniauth(access_token)
     data =  access_token
-    user = User.where(:email => data["email"].first)
+    user = User.where(:email => data["info"]["email"]).first
     unless user
       user = User.create(
-        name:data["name"],
-        email: data["email"],
+        name:data["info"]["name"],
+        email: data["info"]["email"],
         password: [*('a'..'z'),*('0'..'9')].shuffle[0,8].join
       )
-      flash[:notice] = "Successfully created Your password is #{:password} "
+      flash[:notice] = "Successfully created Your password is #{user.password} "
     end
     user
 end

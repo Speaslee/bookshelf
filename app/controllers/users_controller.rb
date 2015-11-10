@@ -85,7 +85,7 @@ end
      session[:return_to] = nil
      if user.save
        session[:user_id] = user.id
-       redirect_to root
+       redirect_to "/"
 
     end
   end

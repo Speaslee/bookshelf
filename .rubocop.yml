@@ -1,0 +1,17 @@
+Style/Documentation:
+  Enabled: false
+
+Style/StringLiterals:
+  Enabled: false
+
+Style/SpaceAfterComma:
+  Enabled: false
+
+Style/EmptyLinesAroundClassBody:
+  Enabled: false
+
+Style/EmptyLines:
+  Enabled: false
+
+Style/SpaceAroundOperators:
+  Enabled: false

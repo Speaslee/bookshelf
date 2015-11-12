@@ -8,7 +8,7 @@ class UsersController < ApplicationController
   end
 
   def login_page
-    found=  User.where(email: params[:email],).first
+    found = User.where(email: params[:email],).first
 
     if found.authenticate(params[:password])
       session[:logged_in_user_id] = found.id
@@ -32,11 +32,11 @@ class UsersController < ApplicationController
     if @user.save
 
       flash[:sucess] = "You've been added"
-      if User.last.email.include?("@theironyard.com")
-        User.last.update(
+      if @user.email.include?("@theironyard.com")
+        @user.update(
         admin: true,
         librarian: true,
-        editor: true,
+        editor: true
         )
       end
     redirect_to "/login"
@@ -79,10 +79,10 @@ end
   end
 
   def google_oauth2
-    auth_hash =request.env["omniauth.auth"]
-     user = User.from_omniauth(auth_hash)
-     url = session[:return_to]|| root_path
-     session[:return_to] = nil
+    auth_hash = request.env["omniauth.auth"]
+    user = User.from_omniauth(auth_hash)
+    url = session[:return_to]|| root_path
+    session[:return_to] = nil
      if user.save
        session[:logged_in_user_id] = user.id
        redirect_to "/libraries"

@@ -17,21 +17,18 @@ post "/libraries/users/create_user" => "users#create"
 get "/libraries/users/profile/:id" => "users#profile"
 get "/login" => "users#login"
 post "/login" => "users#login_page"
-delete "/logout"=>"users#logout"
-get "/users/assign_admin/:id" =>"users#admin"
-patch "/users/assign_admin/:id" =>"users#assign_admin"
-delete "/users/assign_admin/:id"=>"users#delete_admin"
+delete "/logout" => "users#logout"
+get "/users/assign_admin/:id" => "users#admin"
+patch "/users/assign_admin/:id" => "users#assign_admin"
+delete "/users/assign_admin/:id"=> "users#delete_admin"
 
-
-get "/users/edit"=>"address#edit"
-patch "/users/edit_user"=>"address#edit_user"
-get "/users/add_address"=>"address#new"
-post "/users/add_address"=> "address#create"
+get "/users/edit" => "address#edit"
+patch "/users/edit_user" => "address#edit_user"
+get "/users/add_address" => "address#new"
+post "/users/add_address" => "address#create"
 delete "/users/delete_address/:id" => "address#delete"
 
-
-get "/auth/google_login/callback" =>"users#google_oauth2"
-
+get "/auth/google_login/callback" => "users#google_oauth2"
 
 root "libraries#index"
 end

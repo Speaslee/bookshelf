@@ -1,17 +1,21 @@
 <h1>Assign Admin Priviliges</h1>
 <% user = User.find params[:id]%>
 <p>
-<%=user.name%> already has
-<%if user.editor%>
-editor
-<%end%>
-<%if user.librarian%>
-librarian
-<%end%>
-<%if user.admin%>
-admin
-<%end%>
-privileges
+<% if user.admin==true || user.librarian==true || user.editor==true%>
+  <%=user.name%> already has
+  <%if user.editor%>
+  editor
+  <%end%>
+  <%if user.librarian%>
+  librarian
+  <%end%>
+  <%if user.admin%>
+  admin
+  <%end%>
+  privileges
+<%else%>
+    <%=user.name%> does not have any admin privileges
+  <%end%>  
 <%= form_tag "/users/assign_admin/#{user.id}", method: :patch do %>
 <label>
   Librarian

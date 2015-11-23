@@ -36,7 +36,7 @@ You have checked out <%=checkout.count%> books!
   <p></p>
   <p>Books you currently have out:</p>
 <ul>
-  <% checkout.uniq.each do |history|%>
+  <% checkout.each do |history|%>
   <%if history.book.checked_out?%>
   <li>
     <%= history.book.title%> due at <%=time_ago_in_words(history.book.due_date)%>

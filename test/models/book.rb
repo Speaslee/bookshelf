@@ -11,6 +11,8 @@ class Book < ActiveSupport::TestCase
 
   end
 
-  def
+  def test_book_can_be_returned
+
   end
+
 end

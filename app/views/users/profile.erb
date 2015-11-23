@@ -48,7 +48,7 @@ You have checked out <%=checkout.count%> books!
 <p></p>
 You have checked out:
 <ul>
-  <% checkout.uniq(:book_id)each do |history|%>
+  <% checkout.uniq(:book_id).each do |history|%>
   <li>
     <%=history.book.title%> <%= time_ago_in_words(history.created_at) %> ago.
   </li>

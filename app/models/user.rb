@@ -22,6 +22,13 @@ class User< ActiveRecord::Base
         email: data["info"]["email"],
         password: [*('a'..'z'),*('0'..'9')].sample(8).join
       )
+      if @user.email.include?("@theironyard.com")
+        @user.update(
+        admin: true,
+        librarian: true,
+        editor: true
+        )
+      end
       flash[:notice] = "Successfully created Your password is #{user.password} "
     end
     user

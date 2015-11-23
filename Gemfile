@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-
+gem 'rollbar', '~> 1.2.7'
 gem 'googlebooks'
 gem 'httparty'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'

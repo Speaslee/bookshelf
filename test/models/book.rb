@@ -1,7 +1,16 @@
 require 'test_helper'
 
 class Book < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+
+  def test_book_can_be_checked_out
+
+  end
+
+
+  def test_book_can_be_edited
+
+  end
+
+  def
+  end
 end

@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
 gem 'rollbar', '~> 1.2.7'
 gem 'googlebooks'
+gem "codeclimate-test-reporter", group: :test, require: nil
 gem 'httparty'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.4'

@@ -1,6 +1,5 @@
 Heroku link : https://rocky-meadow-7751.herokuapp.com
-<a href="https://codeclimate.com/github/Speaslee/bookshelf"><img src="https://codeclimate.com/github/Speaslee/bookshelf/badges/gpa.svg" /></a>
-
+{<img src="https://codeclimate.com/github/Speaslee/bookshelf/badges/gpa.svg" />}[https://codeclimate.com/github/Speaslee/bookshelf]
 Allows users to check out books from a virtual library. Admin users can assign admin powers to other users.
 Publishers can add new books to the library and editors can edit their information.
 Plugs into Google Books with googlebooks gem to get more information about a book after it has been added to library.

@@ -1,0 +1,32 @@
+<% book = Book.find params[:id]%>
+
+<h1><%=book.title%></h1>
+<h3><%=book.author%></h3>
+
+<%if book.image_link%>
+<img src="<%=book.image_link%>" alt="Book cover">
+<%end%>
+
+<p><b><%=book.genre%></p>
+<p><%=book.publisher%>,
+<%=book.published_date%></b></p>
+
+<p><b>ISBN number: </b><%=book.isbn%></p>
+<p><b>Description: </b><%=book.description%></p>
+<p><b>Page Count:</b> <%=book.page_count%></p>
+<p><b>Average Rating:</b> <%=book.average_rating%></p>
+<%if book.preview_link%>
+<a href=<%=book.preview_link%>> Preview </a>
+<%end%>
+  <h2> Checkout History </h2>
+<%checkout = Checkout.where(book_id: book.id)%>
+This book has been checked out <%=checkout.count%> times.
+<ul>
+  <% checkout.each do |history|%>
+  <li>
+    <%=history.user.name%> checked out this book <%= time_ago_in_words(history.created_at) %> ago.
+  </li>
+  <%end%>
+  <ul>
+    <p><%=  link_to "Back to Library", "/libraries", class:"btn btn-default"%>
+    </p>

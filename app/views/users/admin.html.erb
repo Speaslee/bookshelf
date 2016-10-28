@@ -1,0 +1,54 @@
+<h1>Assign Admin Priviliges</h1>
+<% user = User.find params[:id]%>
+<p>
+<% if user.admin==true || user.librarian==true || user.editor==true%>
+  <%=user.name%> already has
+  <%if user.editor%>
+  editor
+  <%end%>
+  <%if user.librarian%>
+  librarian
+  <%end%>
+  <%if user.admin%>
+  admin
+  <%end%>
+  privileges
+<%else%>
+    <%=user.name%> does not have any admin privileges
+  <%end%>  
+<%= form_tag "/users/assign_admin/#{user.id}", method: :patch do %>
+<label>
+  Librarian
+  <input type="checkbox" name= "librarian" value=true>
+</label>
+<label>
+  Editor
+  <input type="checkbox" name= "editor" value=true>
+</label>
+<label>
+  Admin
+  <input type="checkbox" name= "admin" value=true>
+</label>
+<button> Save</button>
+<%end%>
+<p></p>
+<p> Remove privileges </p>
+<p></p>
+</form>
+<%= form_tag "/users/assign_admin/#{user.id}", method: :delete do %>
+<label>
+  Librarian
+  <input type="checkbox" name= "librarian" value=false>
+</label>
+<label>
+  Editor
+  <input type="checkbox" name= "editor" value=false>
+</label>
+<label>
+  Admin
+  <input type="checkbox" name= "admin" value=false>
+</label>
+<button> Save</button>
+<%end%>
+</form>
+<%=  link_to "Back to Users List", "/libraries/user_list", class:"btn btn-default"%>

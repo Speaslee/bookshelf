@@ -1,0 +1,21 @@
+<h1>Library Users</h1>
+
+<ul>
+<% person = User.all %>
+<% person.each do |user| %>
+<li> <%=user.name%>,
+  <ul>
+  <li><%user.addresses.all.each do |place|%>
+    <%= place.city%>, <%=place.state%>
+  </li>
+  <%end%>
+</ul>
+    <%if current_user.admin %>
+    <%= link_to "Assign admin priviliges?", "/users/assign_admin/#{user.id}", class:"btn btn-default"%>
+    <%end%>
+</li>
+<%end%>
+</ul>
+<p></p>
+<p><%=  link_to "Back to Library", "/libraries", class:"btn btn-default"%>
+</p>

@@ -7,4 +7,10 @@
 <label>
   password
   <input type="password" name="password">
-<p><%= link_to "Not signed up yet? Create new user", "/libaries/users/create_user" %></p>
+</label>
+<button> Login </button>
+</form>
+ <li><a href='/auth/google_login'>Sign in with Google</a></li>
+  <p></p>
+<p><%= link_to "Not signed up yet? Create new user", "/libraries/users/create_user", class:"btn btn-default" %></p>
+<%=  link_to "Back to homepage", root_path, class:"btn btn-default"%>

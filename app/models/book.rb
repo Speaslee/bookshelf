@@ -1,5 +1,6 @@
 class Book < ActiveRecord::Base
   belongs_to :library
+  validates_presence_of :title, :author, :genre, :tagline
   #belongs_to :user, through: :checkouts
 
   def is_checked_out

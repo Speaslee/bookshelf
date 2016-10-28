@@ -1,0 +1,58 @@
+<h1> <%= current_user.name %>'s History </h1>
+
+Name: <%= current_user.name %>
+<p></p>
+Email: <%= current_user.email %>
+<p></p>
+<% address = Address.where(user_id: current_user.id)%>
+<% if address.any? %>
+ Address:<ul>
+  <%address.each do |place|%>
+  <li>
+    <%= place.street %>, <%= place.city %> <%= place.state %>, <%= place.zip %>
+  <%=  link_to "Edit", "/users/edit",  class:"btn btn-default"%>
+      <%= form_tag "/users/delete_address/#{place.id}", method: :delete do%>
+      <button class="btn btn-default">Delete</button>
+      <% end%>
+    </form>
+  <%end%>
+  </li>
+</ul>
+<%end%>
+
+<p></p>
+<%=  link_to "Add an Address", "/users/add_address",  class:"btn btn-default"%>
+<p></p>
+<%checkout = Checkout.where(user_id: current_user.id)%>
+<% if !checkout.any? %>
+You have never checked out a book!
+<% elsif checkout.count == 1 %>
+You have checked out your first book!
+<% else %>
+You have checked out <%=checkout.count%> books!
+<%end%>
+<p></p>
+  <p></p>
+  <p></p>
+  <p>Books you currently have out:</p>
+<ul>
+  <% checkout.each do |history|%>
+  <%if history.book.checked_out?%>
+  <li>
+    <%= history.book.title%> due at <%=time_ago_in_words(history.book.due_date)%>
+  </li>
+    <%end%>
+      <%end%>
+    </ul>
+
+<p></p>
+You have checked out:
+<ul>
+  <% checkout.uniq(:book_id).each do |history|%>
+  <li>
+    <%=history.book.title%> <%= time_ago_in_words(history.created_at) %> ago.
+  </li>
+  <%end%>
+</ul>
+    <p><%=  link_to "Back to Library", "/libraries" , class:"btn btn-default"%>
+    </p>
